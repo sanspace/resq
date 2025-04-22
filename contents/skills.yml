@@ -1,0 +1,15 @@
+Programming:
+  - Python
+  - Javascript
+Containerization:
+  - Docker
+  - Kubernetes
+  - Helm
+  - ArgoCD
+Cloud:
+  - Google Cloud
+  - AWS
+  - Terraform
+SCM:
+  - git
+  - Github

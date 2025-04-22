@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ resume.header.name | default('My Resume') }} | {{ resume.header.title | default('My Title')}}</title> 
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    {% if resume %}
+
+        {# Start Header Section - Place this near the top of <body> #}
+        {% if resume.header %}
+        <header class="header">
+            
+            {# Name as main heading #}
+            {% if resume.header.name %}
+                <h1>{{ resume.header.name }}</h1>
+            {% endif %}
+            
+            {# Title as subheading #}
+            {% if resume.header.title %}
+                <h2>{{ resume.header.title }}</h2>
+            {% endif %}
+
+            <address>
+                {# Contact Information (Using Middle Dot for Separator) #}
+                <div class="contact-info">
+                    {# Use namespace to track if separator is needed #}
+                    {% set ns = namespace(separator_needed=false) %}
+
+                    {# Phone (Optional) #}
+                    {% if resume.header.phone %}
+                        <span>{{ resume.header.phone }}</span> {# Added horizontal margin #}
+                        {% set ns.separator_needed = true %} {# Next item will need a separator #}
+                    {% endif %}
+
+                    {# Email (Optional) #}
+                    {% if resume.header.email %}
+                        {% if ns.separator_needed %} <span>|</span> {% endif %} {# Add middle dot separator #}
+                        <span><a href="mailto:{{ resume.header.email }}">{{ resume.header.email }}</a></span>
+                        {% set ns.separator_needed = true %} {# Next item will need a separator #}
+                    {% endif %}
+
+                    {# Website (Optional) #}
+                    {% if resume.header.website %}
+                        {% if ns.separator_needed %} <span>|</span> {% endif %} {# Add middle dot separator #}
+                        <span><a href="{{ resume.header.website }}" target="_blank" rel="noopener noreferrer">{{ resume.header.website }}</a></span>
+                        {# No need to set separator_needed after the last potential item #}
+                    {% endif %}
+                </div>
+            </address>
+
+        </header>
+        <hr /> {# Separator after header #}
+        {% endif %}
+        {# End Header Section #}
+
+        <main>
+            {# Start Summary Section #}
+            <section class="summary"> 
+                <h2>Summary</h2>
+                <ul>
+                    {% for point in resume.summary %}
+                        <li>{{ point }}</li>
+                    {% endfor %}
+                </ul>   
+            </section>
+            {# End Summary section #}
+
+            {% if resume.skills %}
+            <section class="skills">
+                <h2>Skills</h2>
+                <ul>
+                    {# Use .items() to loop through key-value pairs of the dictionary #}
+                    {# category_name gets the key (e.g., "Programming") #}
+                    {# skill_list gets the value (e.g., ["Python", "Javascript"]) #}
+                    {% for category_name, skill_list in resume.skills.items() %} 
+                        <li>
+                            {# Display the category name (the key) #}
+                            <strong>{{ category_name }}:</strong> 
+                            {# Display the skills list (the value), joined into a string #}
+                            {{ skill_list | join(', ') }} 
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+
+            {# Add this block for Certifications #}
+            {% if resume.certs and resume.certs is iterable and resume.certs is not string %}
+            <section class="certifications">
+                <h2>Certifications</h2>
+                <ul>
+                    {# Loop through each string in the 'certs' list #}
+                    {% for cert_name in resume.certs %}
+                        <li>{{ cert_name }}</li> {# Display the certification name #}
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+            {# End Certifications block #}
+
+            {% if resume.education %}
+            <section class="education">
+                <h2>Education</h2>
+                {# Loop through each dictionary in the education list #}
+                {% for edu in resume.education %}
+                    <div class="education-entry"> 
+                        {# Access keys directly from the 'edu' dictionary #}
+                        <p>
+                            {% if edu.degree %}<strong>{{ edu.degree }}</strong>{% endif %}
+                            {% if edu.institution %} - {{ edu.institution }}{% endif %}
+                            {% if edu.location %} ({{ edu.location }}){% endif %}
+                        </p>
+                        <p>
+                            {% if edu.start %}{{ edu.start }}{% endif %}
+                            {% if edu.start and edu.end %} - {% endif %}
+                            {% if edu.end %}{{ edu.end }}{% else %}{% if edu.start %} - Present{% endif %}{% endif %} 
+                        </p>
+                        {# Check if an optional 'details' list exists #}
+                        {% if edu.details and edu.details is iterable and edu.details is not string %}
+                            <ul>
+                            {% for detail in edu.details %}
+                                <li>{{ detail }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                    {# Add a separator, but not after the last entry #}
+                    {% if not loop.last %} 
+                        <hr />
+                    {% endif %}
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            {# Add this block for Experience - Place after Education/Skills etc. #}
+            {% if resume.experience %}
+            <section class="experience">
+                <h2>Experience</h2>
+                
+                {# Loop through each job dictionary in the experience list #}
+                {% for job in resume.experience %}
+                    <div class="job-entry">
+                    
+                        {# Job Title and Company #}
+                        <p>
+                            {% if job.title %}<strong>{{ job.title }}</strong>{% endif %}
+                            {% if job.company %} at {{ job.company }}{% endif %}
+                        </p>
+                        
+                        {# Location and Dates #}
+                        <p>
+                            {% if job.location %}{{ job.location }} | {% endif %}
+                            {% if job.start %}{{ job.start }}{% endif %}
+                            {% if job.start and job.end %} – {% endif %} 
+                            {% if job.end %}{{ job.end }}{% endif %}
+                        </p>
+            
+                        {# Experience Bullet Points #}
+                        {% if job.experience and job.experience is iterable and job.experience is not string %}
+                            <ul>
+                                {% for point in job.experience %}
+                                    <li>{{ point }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        
+                    </div>
+                    {# Add a separator between jobs, but not after the last one #}
+                    {% if not loop.last %} 
+                        <hr />
+                    {% endif %}
+                {% endfor %}
+                
+            </section>
+            {% endif %}
+            {# End Experience block #}
+
+            {# Start Links block #}
+            {% if resume.links and resume.links is iterable and resume.links is not string %}
+            <section class="links">
+                <h2>Links</h2>
+                <ul>
+                    {# Loop through each dictionary item in the 'links' list #}
+                    {% for link_item in resume.links %}
+                        {# Each link_item is a dict like {'Github': '...'} #}
+                        {# Loop through the single key-value pair in link_item #}
+                        {% for link_name, link_url in link_item.items() %}
+                            <li>
+                                {# Create a link with the URL and display the name #}
+                                <a href="{{ link_url }}" target="_blank" rel="noopener noreferrer">
+                                    {{ link_name }}
+                                </a>
+                                {# Optionally display the URL next to it in parentheses #}
+                                <span> ({{ link_url }})</span>
+                            </li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </section>
+            {% endif %}
+            {# End Links block #}
+        </main>        
+    {% else %}
+        <p>Error: No resume data found or loaded.</p>
+    {% endif %}
+</body>
+</html>

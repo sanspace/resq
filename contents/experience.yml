@@ -1,0 +1,44 @@
+- title: Cloud Engineer, Infrastructure
+  company: Google Cloud
+  location: India
+  start: 2022
+  end: Present
+  experience:
+    - Achieved 100% CSAT by streamlining Foundations deployment using Terraform modules and conducting workshops.
+    - Reduced Terraform repo size by 70% through best practices and remote state data sources.
+    - Engineered Terraform modules, accelerating cloud resource provisioning times by 75%, leading to faster onboarding processes for over 15 high-profile enterprise customers.
+    - Analyzed and Fixed ArgoCD pipelines and Helm charts to improve GKE deployments.
+    - Led training sessions on cloud technologies and tools for developers.
+- title: Solution Architect
+  company: TechMahindra
+  location: India
+  start: 2021
+  end: 2022
+  experience:
+    - Led RFP/RFQ responses, providing tailored solutions, estimates, and resource allocation.
+    - Architected and developed a proprietary SMART Observability product, offering preconfigured solutions based on open-source for public cloud environments.
+    - Collaborated with AWS as a launch partner for innovative monitoring and observability solutions.
+    - Recruited top talent in cloud, DevOps, and SRE to build high-performing teams.
+    - Led a team of DevOps engineers to improve shipping times by 15%.
+- title: Senior Developer
+  company: Cognizant
+  location: US and India
+  start: 2009
+  end: 2021
+  experience:
+    - Achieved 99.9% application uptime through high-availability, scalability, and fault-tolerance strategies.
+    - Reduced RTO/RPO to under 1 hour with cross-region failover and Terraform scripts.
+    - Optimized cloud costs by 50% through rightsizing, efficient storage, and cost-saving measures.
+    - Improved application performance by 20x through optimized instance configurations and custom AMIs.
+    - Scaled enterprise platform to 10x users with effective auto-scaling and infrastructure management.
+    - Accelerated development and deployment processes by 50% through automation and DevOps practices.
+    - Enhanced security and compliance with robust IAM, network isolation, and disaster recovery measures.
+    - Engineered custom scripts using Python and Go to automate grunt work.
+- title: Assistant Engineer, Testing
+  company: Infosys
+  location: India
+  start: 2008
+  end: 2009
+  experience:
+    - Trained and mentored hundreds of testers on QTP using VBScript.
+    - Created an internal reporting portal using HTML, CSS, and JavaScript.
