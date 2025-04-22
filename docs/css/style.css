@@ -1,0 +1,199 @@
+/* --- Base Styles --- */
+body {
+  font-family: sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px; /* Optional: Limit width */
+  margin: 0 auto; /* Optional: Center content
+    background-color: #fdfdfd; /* Optional: Light background */
+}
+
+h1,
+h2 {
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
+
+
+a {
+  color: #007bff; /* Standard link blue */
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  padding-left: 20px;
+  margin-top: 0.5em; /* Default list margins */
+  margin-bottom: 1em;
+}
+
+li {
+  margin-bottom: 5px; /* Default list item bottom margin */
+  list-style-type: square;
+}
+
+strong {
+  font-weight: bold;
+}
+
+hr {
+  /* Default HR style */
+  border: 0;
+  height: 1px;
+  background: #eee; /* Using the lighter color */
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+address {
+  /* Reset browser default italic style */
+  font-style: normal;
+}
+
+pre {
+  /* For the debug block */
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto; /* Handle long lines */
+}
+
+/* --- General Section Styling --- */
+section {
+  /* Targets <section> tags inside <main> */
+  margin-bottom: 20px; /* Default spacing below sections */
+}
+
+section h2 {
+  font-size: 1.2em;
+  text-transform: uppercase;
+}
+
+/* --- Header Section --- */
+header.header {
+  /* Target <header> tag with class header */
+  text-align: center;
+  margin-bottom: 30px; /* Space below header block */
+}
+header.header h1 {
+  margin-bottom: 0px;
+  font-size: 2.5em;
+  border-bottom: none; /* No border for name */
+  margin-top: 0; /* No top margin for name */
+}
+header.header h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.5em;
+  color: #555;
+  font-weight: normal;
+  border-bottom: none; /* No border for title */
+}
+.contact-info {
+  /* Class selector remains the same */
+  font-size: 0.9em;
+  color: #333;
+}
+.contact-info span {
+  /* Spacing for contact items and separators */
+  margin: 0 5px;
+}
+.contact-info a {
+  /* Ensure contact links use surrounding color */
+  color: inherit;
+  text-decoration: none;
+}
+/* Specific HR after header */
+header.header + hr {
+  /* Target HR directly after header element */
+  background: #ccc; /* Darker separator after header */
+  margin-bottom: 30px; /* Extra space after header separator */
+  margin-top: 0; /* Reset top margin */
+}
+
+/* --- Summary Section --- */
+section.summary ul {
+  padding-left: 20px;
+  list-style-type: disc;
+  margin-top: 0; /* Align list closer to heading */
+}
+section.summary li {
+  margin-bottom: 8px; /* Match default li style */
+}
+
+
+/* --- Certifications Section --- */
+section.certifications ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+
+/* --- Education Section --- */
+.education-entry {
+  /* Assuming this div remains inside section.education */
+  margin-bottom: 15px;
+}
+.education-entry p:first-of-type {
+  /* Title/Institution line */
+  margin-bottom: 2px; /* Reduce space below this line */
+}
+.education-entry p:nth-of-type(2) {
+  /* Date/Location line */
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.education-entry ul {
+  /* Details list */
+  margin-top: 5px;
+  padding-left: 20px;
+  font-size: 0.95em; /* Slightly smaller for details */
+}
+.education-entry hr {
+  /* Separator inside education entries */
+  border-top: 1px dashed #eee;
+  margin: 10px 0;
+}
+
+/* --- Experience Section --- */
+.job-entry {
+  /* Assuming this div remains inside section.experience */
+  margin-bottom: 25px; /* Space below each job entry */
+}
+.job-entry p:first-of-type {
+  /* Title/Company line */
+  margin-top: 0;
+  margin-bottom: 2px; /* Reduce space below this line */
+}
+.job-entry p:nth-of-type(2) {
+  /* Date/Location line */
+  font-size: 0.9em;
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.job-entry ul {
+  /* Experience points list */
+  margin-top: 5px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+.job-entry li {
+  margin-bottom: 5px; /* Slightly less space between experience points */
+}
+.job-entry hr {
+  /* Separator inside experience entries */
+  border-top: 1px dashed #eee;
+  margin: 20px 0;
+}
+
+/* --- Links Section --- */
+section.links ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
